@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7C045376-71E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetBuddy.Domain", "backend\src\BudgetBuddy.Domain\BudgetBuddy.Domain.csproj", "{CB2E3345-ADC2-47DC-9AC0-0B7F7A24D825}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetBuddy.Infrastructure", "backend\src\BudgetBuddy.Infrastructure\BudgetBuddy.Infrastructure.csproj", "{3AAE8E41-DFDF-4308-A802-EA539AFAEA19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,9 +24,14 @@ Global
 		{CB2E3345-ADC2-47DC-9AC0-0B7F7A24D825}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB2E3345-ADC2-47DC-9AC0-0B7F7A24D825}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB2E3345-ADC2-47DC-9AC0-0B7F7A24D825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AAE8E41-DFDF-4308-A802-EA539AFAEA19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AAE8E41-DFDF-4308-A802-EA539AFAEA19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AAE8E41-DFDF-4308-A802-EA539AFAEA19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AAE8E41-DFDF-4308-A802-EA539AFAEA19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7C045376-71EC-4062-A6BD-A564B0165B17} = {AFCD1AFF-062D-4F6C-B923-7A375EDA7824}
 		{CB2E3345-ADC2-47DC-9AC0-0B7F7A24D825} = {7C045376-71EC-4062-A6BD-A564B0165B17}
+		{3AAE8E41-DFDF-4308-A802-EA539AFAEA19} = {7C045376-71EC-4062-A6BD-A564B0165B17}
 	EndGlobalSection
 EndGlobal
