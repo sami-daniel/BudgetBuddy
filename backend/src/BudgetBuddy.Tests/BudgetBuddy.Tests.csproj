@@ -24,4 +24,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BudgetBuddy.Domain\BudgetBuddy.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
