@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetBuddy.Domain", "backe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetBuddy.Infrastructure", "backend\src\BudgetBuddy.Infrastructure\BudgetBuddy.Infrastructure.csproj", "{3AAE8E41-DFDF-4308-A802-EA539AFAEA19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetBuddy.Tests", "backend\src\BudgetBuddy.Tests\BudgetBuddy.Tests.csproj", "{B3A9CDEA-146D-4089-8314-012FBCB8EACF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,10 +30,15 @@ Global
 		{3AAE8E41-DFDF-4308-A802-EA539AFAEA19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AAE8E41-DFDF-4308-A802-EA539AFAEA19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AAE8E41-DFDF-4308-A802-EA539AFAEA19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A9CDEA-146D-4089-8314-012FBCB8EACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A9CDEA-146D-4089-8314-012FBCB8EACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A9CDEA-146D-4089-8314-012FBCB8EACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A9CDEA-146D-4089-8314-012FBCB8EACF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7C045376-71EC-4062-A6BD-A564B0165B17} = {AFCD1AFF-062D-4F6C-B923-7A375EDA7824}
 		{CB2E3345-ADC2-47DC-9AC0-0B7F7A24D825} = {7C045376-71EC-4062-A6BD-A564B0165B17}
 		{3AAE8E41-DFDF-4308-A802-EA539AFAEA19} = {7C045376-71EC-4062-A6BD-A564B0165B17}
+		{B3A9CDEA-146D-4089-8314-012FBCB8EACF} = {7C045376-71EC-4062-A6BD-A564B0165B17}
 	EndGlobalSection
 EndGlobal
