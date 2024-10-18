@@ -26,12 +26,12 @@ public interface IRepository<TEntity> where TEntity : class
     /// <param name="entity">The entity to update.</param>
     /// <param name="identifiers">The identifiers of the entity.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the updated entity.</returns>
-    Task<TEntity> UpdateAsync(TEntity entity, params object[] identifiers);
+    Task<TEntity> Update(TEntity entity, params object[] identifiers);
 
     /// <summary>
     /// Deletes an entity from the repository by its identifiers.
     /// </summary>
     /// <param name="identifiers">The identifiers of the entity.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the deleted entity.</returns>
-    Task<TEntity> DeleteAsync(params object[] identifiers);
+    Task<TEntity> Delete(params object[] identifiers);
 }
