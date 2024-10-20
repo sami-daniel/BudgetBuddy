@@ -1,4 +1,4 @@
-namespace BudgetBuddy.Domain.Abstractions.Repository.Exceptions;
+﻿namespace BudgetBuddy.Domain.Abstractions.Repository.Exceptions;
 
 /// <summary>
 /// Represents errors that occur during repository operations.

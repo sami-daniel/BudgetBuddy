@@ -1,4 +1,4 @@
-namespace BudgetBuddy.Domain.Abstractions.Repository.Exceptions;
+﻿namespace BudgetBuddy.Domain.Abstractions.Repository.Exceptions;
 
 /// <summary>
 /// Exception thrown when an entity is not found in the repository.

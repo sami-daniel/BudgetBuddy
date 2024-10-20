@@ -1,4 +1,4 @@
-namespace BudgetBuddy.Domain.Abstractions.Repository.Exceptions;
+﻿namespace BudgetBuddy.Domain.Abstractions.Repository.Exceptions;
 
 /// <summary>
 /// Exception thrown when an attempt is made to add an entity that already exists in the repository.

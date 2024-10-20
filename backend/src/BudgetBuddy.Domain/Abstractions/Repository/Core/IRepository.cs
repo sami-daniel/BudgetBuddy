@@ -1,4 +1,4 @@
-namespace BudgetBuddy.Domain.Abstractions.Repository.Core;
+﻿namespace BudgetBuddy.Domain.Abstractions.Repository.Core;
 
 /// <summary>
 /// Defines a repository interface for performing CRUD operations on entities.

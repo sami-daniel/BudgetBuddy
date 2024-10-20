@@ -1,4 +1,4 @@
-using BudgetBuddy.Domain.Abstractions.Repository.Core;
+﻿using BudgetBuddy.Domain.Abstractions.Repository.Core;
 using BudgetBuddy.Domain.Abstractions.Repository.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,50 +8,74 @@ public abstract class Repository<TEntity>(DbContext context) : IRepository<TEnti
 {
     private readonly DbContext _context = context;
 
-    public async Task<TEntity> AddAsync(TEntity entity)
+    public virtual async Task<TEntity> AddAsync(TEntity entity)
     {
-        var entityExists = await _context.Set<TEntity>().AnyAsync(e => e.Equals(entity));
+        ArgumentNullException.ThrowIfNull(entity, nameof(entity));
+
+        var entityExists = await _context.Set<TEntity>()
+                                         .AsNoTracking()
+                                         .AnyAsync(e => e.Equals(entity));
 
         if (entityExists)
         {
             throw new DuplicatedEntityException(typeof(TEntity), GetEntityKey(entity));
         }
-        
-        try 
+
+        try
         {
             await _context.Set<TEntity>().AddAsync(entity);
         }
-        catch
+        catch (InvalidOperationException ex)
         {
-            throw new RepositoryException();
+            throw new RepositoryException($"An error has occurred while adding an entity of type {typeof(TEntity).Name}.\n", ex);
         }
 
         return entity;
     }
-    public Task<TEntity> DeleteAsync(params object[] identifiers) => throw new NotImplementedException();
-    public Task<TEntity> GetByIdentifiersAsync(params object[] identifiers) => throw new NotImplementedException();
-    public Task<TEntity> UpdateAsync(TEntity entity, params object[] identifiers) => throw new NotImplementedException();
-
-    private object? GetEntityKey(TEntity entity)
+    public virtual async Task<TEntity> Delete(params object[] identifiers)
     {
-        var keyNames = _context.Model.FindEntityType(typeof(TEntity))?.FindPrimaryKey()?.Properties
-            .Select(x => x.Name).ToList();
+        ArgumentNullException.ThrowIfNull(identifiers, nameof(identifiers));
 
-        if (keyNames == null || keyNames.Count == 0)
-        {
-            return null;
-        }
+        var entity = await _context.Set<TEntity>().FindAsync(identifiers)
+                     ?? throw new EntityNotFoundException(typeof(TEntity), identifiers);
 
-        var keyValues = new List<object>();
-        foreach (var keyName in keyNames)
-        {
-            var keyValue = typeof(TEntity).GetProperty(keyName)?.GetValue(entity, null);
-            if (keyValue != null)
-            {
-                keyValues.Add(keyValue);
-            }
-        }
+        _context.Set<TEntity>().Remove(entity);
 
-        return keyValues.Count == 1 ? keyValues[0] : Array.Empty<object>();
+        return entity;
+    }
+    public virtual async Task<TEntity> GetByIdentifiersAsync(params object[] identifiers)
+    {
+        ArgumentNullException.ThrowIfNull(identifiers);
+
+        var entity = await _context.Set<TEntity>().FindAsync(identifiers)
+                     ?? throw new EntityNotFoundException(typeof(TEntity), identifiers);
+
+        return entity;
+    }
+
+    public virtual async Task<TEntity> Update(TEntity entity, params object[] identifiers)
+    {
+        ArgumentNullException.ThrowIfNull(entity, nameof(entity));
+        ArgumentNullException.ThrowIfNull(identifiers, nameof(identifiers));
+
+        var oldEntity = await _context.Set<TEntity>()
+                                      .FindAsync(identifiers)
+                                       ?? throw new EntityNotFoundException(typeof(TEntity), identifiers);
+
+        _context.Entry(oldEntity).CurrentValues.SetValues(entity);
+
+        return entity;
+    }
+
+    private object GetEntityKey(TEntity entity)
+    {
+        var keyName = _context.Model.FindEntityType(typeof(TEntity))!
+                                    .FindPrimaryKey()!.Properties
+                                    .Select(static p => p.Name)
+                                    .Single();
+
+        return entity.GetType()
+                     .GetProperty(keyName)!
+                     .GetValue(entity)!;
     }
 }
