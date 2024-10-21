@@ -270,10 +270,8 @@ public class RepositoryTests
     #endregion
 
     // Configurations
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext(DbContextOptions<RepositoryTests.ApplicationDbContext> options) : DbContext(options)
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-
         public DbSet<TestEntity> TestEntities { get; set; }
     }
 
@@ -311,10 +309,7 @@ public class RepositoryTests
         }
     }
 
-    public class TestEntityRepository : Repository<TestEntity>
+    public class TestEntityRepository(RepositoryTests.ApplicationDbContext context) : Repository<TestEntity>(context)
     {
-        public TestEntityRepository(ApplicationDbContext context) : base(context)
-        {
-        }
     }
 }
