@@ -11,7 +11,7 @@ public interface IUnitOfWork
     /// </summary>
     /// <returns>A task that represents the asynchronous operation.
     /// The task result contains the number of affected rows.</returns>
-    Task<int> Execute();
+    Task<int> ExecuteAsync();
 
     /// <summary>
     /// Begins a new transaction asynchronously.
