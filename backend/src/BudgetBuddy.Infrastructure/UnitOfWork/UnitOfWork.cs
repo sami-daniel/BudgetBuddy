@@ -1,12 +1,15 @@
-﻿using BudgetBuddy.Domain.Abstractions.UnitOfWork;
+﻿using BudgetBuddy.Domain.Abstractions.Repository.Specialized;
+using BudgetBuddy.Domain.Abstractions.UnitOfWork;
 using BudgetBuddy.Domain.Abstractions.UnitOfWork.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace BudgetBuddy.Infrastructure.UnitOfWork;
 
-public class UnitOfWork(DbContext context) : IUnitOfWork
+public class UnitOfWork(DbContext context, IUserRepository userRepository) : IUnitOfWork
 {
     private readonly DbContext _context = context;
+
+    public IUserRepository UserRepository { get; } = userRepository;
 
     public async Task BeginTransactionAsync()
     {
