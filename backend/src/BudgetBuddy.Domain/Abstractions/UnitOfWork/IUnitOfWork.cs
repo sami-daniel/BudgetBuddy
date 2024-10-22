@@ -1,11 +1,18 @@
-﻿namespace BudgetBuddy.Domain.Abstractions.UnitOfWork;
+﻿using BudgetBuddy.Domain.Abstractions.Repository.Specialized;
+
+namespace BudgetBuddy.Domain.Abstractions.UnitOfWork;
 
 /// <summary>
-/// Represents a unit of work that encapsulates a series of operations
-/// that should be executed as a single transaction.
+/// Represents a unit of work that encapsulates a series of data access operations and manages transactions,
+/// acting like a single acess point to Data Acess.
 /// </summary>
 public interface IUnitOfWork
 {
+    /// <summary>
+    /// Gets the user repository.
+    /// </summary>
+    IUserRepository UserRepository { get; }
+
     /// <summary>
     /// Executes the unit of work and returns the number of affected rows.
     /// </summary>
