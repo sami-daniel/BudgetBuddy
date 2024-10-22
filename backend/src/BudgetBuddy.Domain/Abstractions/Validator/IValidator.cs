@@ -8,5 +8,11 @@ namespace BudgetBuddy.Domain.Abstractions.Validator;
 /// <typeparam name="TEntity">The entity to be validated.</typeparam>
 public interface IValidator<TEntity> where TEntity : class
 {
+    /// <summary>
+    /// Validates the entity.
+    /// </summary>
+    /// <param name="entity">The entity to be validated.</param>
+    /// <returns>A task that represents the asynchronous operation. The return type is a <see cref="ValidationState"/>
+    /// containing the error messages caused by validation process.</returns>
     Task<ValidationState> ValidateAsync(TEntity entity);
 }
