@@ -1,4 +1,4 @@
-namespace BudgetBuddy.Domain.Entities;
+﻿namespace BudgetBuddy.Domain.Entities;
 
 /// <summary>
 /// Represents a user entity in the BudgetBuddy application.

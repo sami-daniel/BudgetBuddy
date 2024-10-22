@@ -1,4 +1,4 @@
-namespace BudgetBuddy.Domain.Abstractions.UnitOfWork;
+﻿namespace BudgetBuddy.Domain.Abstractions.UnitOfWork;
 
 /// <summary>
 /// Represents a unit of work that encapsulates a series of operations

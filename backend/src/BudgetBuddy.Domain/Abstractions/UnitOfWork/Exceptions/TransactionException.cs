@@ -1,4 +1,4 @@
-namespace BudgetBuddy.Domain.Abstractions.UnitOfWork.Exceptions;
+﻿namespace BudgetBuddy.Domain.Abstractions.UnitOfWork.Exceptions;
 
 /// <summary>
 /// Represents errors that occur during transaction operations within a unit of work.

@@ -1,4 +1,4 @@
-using BudgetBuddy.Domain.Entities;
+﻿using BudgetBuddy.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
