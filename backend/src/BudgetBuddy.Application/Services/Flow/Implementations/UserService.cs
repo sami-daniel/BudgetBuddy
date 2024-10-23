@@ -11,12 +11,22 @@ using ApplicationException = BudgetBuddy.Domain.Abstractions.Services.Exceptions
 
 namespace BudgetBuddy.Application.Services.Flow.Implementations;
 
+/// <summary>
+/// Service for handling user-related operations.
+/// </summary>
 public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IValidatable<User> validatableUser) : IUserService
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly IMapper _mapper = mapper;
     private readonly IValidatable<User> _validatableUser = validatableUser;
 
+    /// <summary>
+    /// Gets a user by their ID.
+    /// </summary>
+    /// <param name="userId">The user ID.</param>
+    /// <returns>The user with the corresponding ID, or null if not found.</returns>
+    /// <exception cref="ArgumentException">Thrown when the user ID is empty.</exception>
+    /// <exception cref="ApplicationException">Thrown when an error occurs while trying to get the user by ID.</exception>
     public async Task<UserResponse?> GetUserByIDAsync(Guid userId)
     {
         if (userId == Guid.Empty)
@@ -39,6 +49,14 @@ public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IValidatable<Us
         }
     }
 
+    /// <summary>
+    /// Registers a new user.
+    /// </summary>
+    /// <param name="userAddRequest">The user to register.</param>
+    /// <returns>The registered user.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the userAddRequest is null.</exception>
+    /// <exception cref="ValidationException">Thrown when the user validation fails.</exception>
+    /// <exception cref="ApplicationException">Thrown when an error occurs while trying to register the user.</exception>
     public async Task<UserResponse> RegisterUserAsync(UserAddRequest userAddRequest)
     {
         ArgumentNullException.ThrowIfNull(userAddRequest, nameof(userAddRequest));
