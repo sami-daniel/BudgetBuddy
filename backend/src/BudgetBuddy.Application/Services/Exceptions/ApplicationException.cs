@@ -1,4 +1,4 @@
-namespace BudgetBuddy.Domain.Abstractions.Services.Exceptions;
+namespace BudgetBuddy.Application.Services.Exceptions;
 
 public class ApplicationException : Exception
 {

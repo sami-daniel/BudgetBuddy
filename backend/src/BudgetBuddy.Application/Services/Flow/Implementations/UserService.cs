@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using BudgetBuddy.Application.DTOs.Requests;
 using BudgetBuddy.Application.DTOs.Responses;
+using BudgetBuddy.Application.Services.Exceptions;
 using BudgetBuddy.Application.Services.Flow.Abstractions;
 using BudgetBuddy.Domain.Abstractions.Repository.Exceptions;
-using BudgetBuddy.Domain.Abstractions.Services.Exceptions;
 using BudgetBuddy.Domain.Abstractions.UnitOfWork;
 using BudgetBuddy.Domain.Abstractions.Validator;
 using BudgetBuddy.Domain.Entities;
-using ApplicationException = BudgetBuddy.Domain.Abstractions.Services.Exceptions.ApplicationException;
+using ApplicationException = BudgetBuddy.Application.Services.Exceptions.ApplicationException;
 
 namespace BudgetBuddy.Application.Services.Flow.Implementations;
 
