@@ -27,7 +27,8 @@ public class UserAddRequest
             return false;
         }
 
-        return Username == userAddRequest.Username && UserPassword == userAddRequest.UserPassword;
+        return Username == userAddRequest.Username
+               && UserPassword == userAddRequest.UserPassword;
     }
 
     public override int GetHashCode()
