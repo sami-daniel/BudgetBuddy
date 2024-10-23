@@ -38,6 +38,8 @@ public class Program
         }
 #endif
 
+        app.MapControllers();
+
         app.Run();
 
     }
