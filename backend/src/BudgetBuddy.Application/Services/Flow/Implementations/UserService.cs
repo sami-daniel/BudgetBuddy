@@ -63,6 +63,7 @@ public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IValidatable<Us
             }
         }
         catch (Exception ex)
+        when (ex is not ValidationException)
         {
             throw new ApplicationException("An error occurred while trying to register the user", ex);
         }
