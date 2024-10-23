@@ -24,4 +24,18 @@ public class User
     /// Gets or sets the date and time when the user was created.
     /// </summary>
     public virtual DateTime CreatedAt { get; set; }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
+
+        var user = (User)obj;
+        return UserId == user.UserId
+               && Username == user.Username
+               && UserPassword == user.UserPassword
+               && CreatedAt == user.CreatedAt;
+    }
 }
