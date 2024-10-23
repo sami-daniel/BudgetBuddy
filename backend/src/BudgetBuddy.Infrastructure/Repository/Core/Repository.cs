@@ -113,7 +113,7 @@ public abstract class Repository<TEntity>(DbContext context) : IRepository<TEnti
     {
         var keyName = _context.Model.FindEntityType(typeof(TEntity))!
                                     .FindPrimaryKey()!.Properties
-                                    .Select(static p => p.Name)
+                                    .Select(p => p.Name)
                                     .Single();
 
         return entity.GetType()
