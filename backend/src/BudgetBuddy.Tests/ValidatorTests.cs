@@ -224,5 +224,59 @@ public class ValidatorTests(ITestOutputHelper outputHelper)
         Assert.False(validationState.IsValid);
     }
 
+    [Fact]
+    public async Task UserValidator_ValidateAsync_UsernameTooLong_ReturnsFailedValidation()
+    {
+        // Arrange
+        var user = new User
+        {
+            Username = new string('a', 256),
+            UserPassword = "foo"
+        };
+        _outputWriter.WriteLine(user.ToString());
+
+        // Act
+        var validationState = await _userValidator.ValidateAsync(user);
+
+        // Assert
+        Assert.False(validationState.IsValid);
+    }
+
+    [Fact]
+    public async Task UserValidator_ValidateAsync_PasswordTooLong_ReturnsFailedValidation()
+    {
+        // Arrange
+        var user = new User
+        {
+            Username = "foo",
+            UserPassword = new string('a', 256)
+        };
+        _outputWriter.WriteLine(user.ToString());
+
+        // Act
+        var validationState = await _userValidator.ValidateAsync(user);
+
+        // Assert
+        Assert.False(validationState.IsValid);
+    }
+
+    [Fact]
+    public async Task UserValidator_ValidateAsync_UsernameInvalidCharacters_ReturnsFailedValidation()
+    {
+        // Arrange
+        var user = new User
+        {
+            Username = "foo!",
+            UserPassword = "foo"
+        };
+        _outputWriter.WriteLine(user.ToString());
+
+        // Act
+        var validationState = await _userValidator.ValidateAsync(user);
+
+        // Assert
+        Assert.False(validationState.IsValid);
+    }
+
     #endregion
 }
