@@ -141,13 +141,13 @@ public class UserServiceTests
     }
 
     [Fact]
-    public async Task GetUserByIDAsync_WhenCalledWithNullUser_ShouldThrowArgumentNotFoundException()
+    public async Task GetUserByIDAsync_WhenCalledWithNullUserID_ShouldThrowArgumentNotFoundException()
     {
         // Arrange
-        var userId = Guid.NewGuid();
+        var userId = Guid.Empty;
 
         // Assert
-        await Assert.ThrowsAsync<ArgumentNullException>(async () =>
+        await Assert.ThrowsAsync<ArgumentException>(async () =>
         {
             // Act
             await _userService.GetUserByIDAsync(userId);

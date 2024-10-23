@@ -19,10 +19,15 @@ public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IValidatable<Us
 
     public async Task<UserResponse?> GetUserByIDAsync(Guid userId)
     {
+        if (userId == Guid.Empty)
+        {
+            throw new ArgumentException("The user ID cannot be empty", nameof(userId));
+        }
+
         try
         {
-            var user = await _unitOfWork.UserRepository.GetByIdentifiersAsync(userId);
-            return _mapper.Map<UserResponse>(user);
+            var newlyAddedUser = await _unitOfWork.UserRepository.GetByIdentifiersAsync(userId);
+            return _mapper.Map<UserResponse>(newlyAddedUser);
         }
         catch (EntityNotFoundException)
         {
@@ -36,6 +41,8 @@ public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IValidatable<Us
 
     public async Task<UserResponse> RegisterUserAsync(UserAddRequest userAddRequest)
     {
+        ArgumentNullException.ThrowIfNull(userAddRequest, nameof(userAddRequest));
+
         try
         {
             var newUser = _mapper.Map<User>(userAddRequest);
