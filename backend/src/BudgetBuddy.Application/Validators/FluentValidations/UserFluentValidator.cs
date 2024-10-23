@@ -16,7 +16,9 @@ public class UserFluentValidator : AbstractValidator<User>
             .MaximumLength(255)
             .WithMessage("Username must be less than 255 characters.")
             .MinimumLength(3)
-            .WithMessage("Username must be at least 3 characters.");
+            .WithMessage("Username must be at least 3 characters.")
+            .Matches("^[a-zA-Z0-9]*$")
+            .WithMessage("Username must contain only letters and numbers.");
 
         RuleFor(u => u.UserPassword)
             .Cascade(CascadeMode.Continue)
