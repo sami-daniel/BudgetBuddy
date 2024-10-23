@@ -9,7 +9,7 @@ public class ValidationState(bool isSucessfulValidation, IEnumerable<string> err
     /// <summary>
     /// Gets the actual validation state
     /// </summary>
-    public virtual bool IsSucessfulValidation { get; } = isSucessfulValidation;
+    public virtual bool IsValid { get; } = isSucessfulValidation;
 
     /// <summary>
     /// Gets the error messages provided by the validation process.
