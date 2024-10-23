@@ -1,4 +1,6 @@
 ﻿using BudgetBuddy.Application.Profiles;
+using BudgetBuddy.Application.Services.Flow.Abstractions;
+using BudgetBuddy.Application.Services.Flow.Implementations;
 using BudgetBuddy.Application.Validators.FluentValidations;
 using BudgetBuddy.Application.Validators.Implementations;
 using BudgetBuddy.Domain.Abstractions.Repository.Specialized;
@@ -39,5 +41,7 @@ public class DISetup
             configuration.AddProfile<UserProfile>();
         });
 
+        // Registering Services
+        services.AddScoped<IUserService, UserService>();
     }
 }
