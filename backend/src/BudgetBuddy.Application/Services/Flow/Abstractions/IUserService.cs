@@ -13,7 +13,7 @@ public interface IUserService
     /// </summary>
     /// <param name="userAddRequest">The user to register.</param>
     /// <returns>The registered user.</returns>
-    Task<UserResponse> RegisterAsync(UserAddRequest userAddRequest);
+    Task<UserResponse> RegisterUserAsync(UserAddRequest userAddRequest);
 
     /// <summary>
     /// Gets a user by their ID.

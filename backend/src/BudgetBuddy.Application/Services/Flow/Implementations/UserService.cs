@@ -15,5 +15,5 @@ public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IValidatable<Us
     private readonly IValidatable<User> _validatableUser = validatableUser;
 
     public Task<UserResponse?> GetUserByIDAsync(Guid userId) => throw new NotImplementedException();
-    public Task<UserResponse> RegisterAsync(UserAddRequest userAddRequest) => throw new NotImplementedException();
+    public Task<UserResponse> RegisterUserAsync(UserAddRequest userAddRequest) => throw new NotImplementedException();
 }
