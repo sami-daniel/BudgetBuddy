@@ -4,10 +4,19 @@ using IUserFluentValidator = FluentValidation.IValidator<BudgetBuddy.Domain.Enti
 
 namespace BudgetBuddy.Application.Validators.Implementations;
 
+/// <summary>
+/// Validates a <see cref="User"/> entity using the provided <see cref="IUserFluentValidator"/>.
+/// </summary>
+/// <param name="userFluentValidator">An instance of <see cref="IUserFluentValidator"/> used to perform the validation.</param>
 public class UserValidator(IUserFluentValidator userFluentValidator) : IValidator<User>
 {
     private readonly IUserFluentValidator _userFluentValidator = userFluentValidator;
 
+    /// <summary>
+    /// Asynchronously validates the specified <see cref="User"/> entity.
+    /// </summary>
+    /// <param name="entity">The <see cref="User"/> entity to validate.</param>
+    /// <returns>A <see cref="ValidationState"/> object containing the validation result and any validation errors.</returns>
     public async Task<ValidationState> ValidateAsync(User entity)
     {
         var validationResult = await _userFluentValidator.ValidateAsync(entity);
