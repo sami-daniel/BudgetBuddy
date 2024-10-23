@@ -9,10 +9,10 @@ public class ValidationState(bool isSucessfulValidation, IDictionary<string, str
     /// <summary>
     /// Gets the actual validation state
     /// </summary>
-    public virtual bool IsValid { get; } = isSucessfulValidation;
+    public bool IsValid { get; } = isSucessfulValidation;
 
     /// <summary>
     /// Gets the error messages with the property key provided by the validation process.
     /// </summary>
-    public virtual IDictionary<string, string[]> Errors { get; } = errors;
+    public IDictionary<string, string[]> Errors { get; } = errors;
 }

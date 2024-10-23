@@ -15,4 +15,10 @@ public class ValidationException : ApplicationException
     {
         Errors = errors;
     }
+
+    public ValidationException(string message, IDictionary<string, string[]> errors)
+        : base(message)
+    {
+        Errors = errors;
+    }
 }
