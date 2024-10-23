@@ -8,6 +8,7 @@ using BudgetBuddy.Domain.Entities;
 using BudgetBuddy.Infrastructure.Data.Contexts;
 using BudgetBuddy.Infrastructure.Repository.Specialized;
 using BudgetBuddy.Infrastructure.UnitOfWork;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,8 +29,8 @@ public class DISetup
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         // Registering Validators
-        services.AddSingleton<FluentValidation.IValidator<User>, UserFluentValidator>(); // This is the FluentValidation validator
-        services.AddSingleton<IValidator<User>, UserValidator>(); // This is the custom implementation of the
+        services.AddSingleton<IValidator<User>, UserFluentValidator>(); // This is the FluentValidation validator
+        services.AddSingleton<IValidatable<User>, ValidatableUser>(); // This is the custom implementation of the
                                                                   // BudgetBuddy.Domain.Abstractions.Validator.IValidator that uses the FluentValidation validator
 
         // Registering Mapper profiles

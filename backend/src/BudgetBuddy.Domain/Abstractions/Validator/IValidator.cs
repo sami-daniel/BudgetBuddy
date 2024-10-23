@@ -6,7 +6,7 @@ namespace BudgetBuddy.Domain.Abstractions.Validator;
 /// Represents a validation process of an <see cref="{TEntity}"/> entity.
 /// </summary>
 /// <typeparam name="TEntity">The entity to be validated.</typeparam>
-public interface IValidator<TEntity> where TEntity : class
+public interface IValidatable<TEntity> where TEntity : class
 {
     /// <summary>
     /// Validates the entity.

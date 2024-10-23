@@ -8,7 +8,7 @@ namespace BudgetBuddy.Application.Validators.Implementations;
 /// Validates a <see cref="User"/> entity using the provided <see cref="IUserFluentValidator"/>.
 /// </summary>
 /// <param name="userFluentValidator">An instance of <see cref="IUserFluentValidator"/> used to perform the validation.</param>
-public class UserValidator(IUserFluentValidator userFluentValidator) : IValidator<User>
+public class ValidatableUser(IUserFluentValidator userFluentValidator) : IValidatable<User>
 {
     private readonly IUserFluentValidator _userFluentValidator = userFluentValidator;
 

@@ -8,7 +8,7 @@ namespace BudgetBuddy.Tests;
 
 public class ValidatorTests(ITestOutputHelper outputHelper)
 {
-    private readonly UserValidator _userValidator = new UserValidator(new UserFluentValidator());
+    private readonly ValidatableUser _userValidator = new ValidatableUser(new UserFluentValidator());
     private readonly ITestOutputHelper _outputWriter = outputHelper;
 
     #region UserValidator
