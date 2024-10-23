@@ -3,15 +3,16 @@
 /// <summary>
 /// Represents the actual state of an validation.
 /// </summary>
-public class ValidationState
+public class ValidationState(bool isSucessfulValidation, IEnumerable<string> errorMessages)
 {
+
     /// <summary>
     /// Gets the actual validation state
     /// </summary>
-    public virtual bool IsSucessfulValidation { get; }
+    public virtual bool IsSucessfulValidation { get; } = isSucessfulValidation;
 
     /// <summary>
     /// Gets the error messages provided by the validation process.
     /// </summary>
-    public virtual IEnumerable<string> ErrorMessages { get; } = new List<string>();
+    public virtual IEnumerable<string> ErrorMessages { get; } = errorMessages;
 }
