@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents the actual state of an validation.
 /// </summary>
-public class ValidationState(bool isSucessfulValidation, IEnumerable<string> errorMessages)
+public class ValidationState(bool isSucessfulValidation, IDictionary<string, string[]> errors)
 {
 
     /// <summary>
@@ -12,7 +12,7 @@ public class ValidationState(bool isSucessfulValidation, IEnumerable<string> err
     public virtual bool IsValid { get; } = isSucessfulValidation;
 
     /// <summary>
-    /// Gets the error messages provided by the validation process.
+    /// Gets the error messages with the property key provided by the validation process.
     /// </summary>
-    public virtual IEnumerable<string> ErrorMessages { get; } = errorMessages;
+    public virtual IDictionary<string, string[]> Errors { get; } = errors;
 }

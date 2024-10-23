@@ -21,11 +21,21 @@ public class ValidatableUser(IUserFluentValidator userFluentValidator) : IValida
     {
         if (entity == null)
         {
-            return new ValidationState(false, ["User is required."]);
+            return new ValidationState(false, new Dictionary<string, string[]> {
+            {
+                    "User",
+                    [ "The user entity cannot be null." ]
+            } });
         }
 
         var validationResult = await _userFluentValidator.ValidateAsync(entity);
         var validationErrors = validationResult.Errors;
-        return new ValidationState(validationResult.IsValid, validationErrors.Select(e => e.ErrorMessage));
+        var errorDicitonary = validationErrors
+            .GroupBy(error => error.PropertyName)
+            .ToDictionary(
+                group => group.Key,
+                group => group.Select(error => error.ErrorMessage).ToArray()
+            );
+        return new ValidationState(validationResult.IsValid, errorDicitonary);
     }
 }
