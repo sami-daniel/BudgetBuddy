@@ -22,6 +22,7 @@ public class Program
 
         // The container DI is configured by the IoC project to isolate the WebAPI project from the rest of the application
         builder.Services.AddLayeredServices();
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
