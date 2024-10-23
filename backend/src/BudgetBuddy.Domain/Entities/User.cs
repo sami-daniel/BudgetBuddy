@@ -38,4 +38,14 @@ public class User
                && UserPassword == user.UserPassword
                && CreatedAt == user.CreatedAt;
     }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(UserId, Username, UserPassword, CreatedAt);
+    }
+
+    public override string ToString()
+    {
+        return $"User {{ UserId = {UserId}, Username = {Username}, UserPassword = {UserPassword}, CreatedAt = {CreatedAt} }}";
+    }
 }
