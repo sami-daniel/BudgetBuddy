@@ -2,9 +2,12 @@
 using BudgetBuddy.Application.DTOs.Requests;
 using BudgetBuddy.Application.DTOs.Responses;
 using BudgetBuddy.Application.Services.Flow.Abstractions;
+using BudgetBuddy.Domain.Abstractions.Repository.Exceptions;
+using BudgetBuddy.Domain.Abstractions.Services.Exceptions;
 using BudgetBuddy.Domain.Abstractions.UnitOfWork;
 using BudgetBuddy.Domain.Abstractions.Validator;
 using BudgetBuddy.Domain.Entities;
+using ApplicationException = BudgetBuddy.Domain.Abstractions.Services.Exceptions.ApplicationException;
 
 namespace BudgetBuddy.Application.Services.Flow.Implementations;
 
@@ -14,6 +17,54 @@ public class UserService(IUnitOfWork unitOfWork, IMapper mapper, IValidatable<Us
     private readonly IMapper _mapper = mapper;
     private readonly IValidatable<User> _validatableUser = validatableUser;
 
-    public Task<UserResponse?> GetUserByIDAsync(Guid userId) => throw new NotImplementedException();
-    public Task<UserResponse> RegisterUserAsync(UserAddRequest userAddRequest) => throw new NotImplementedException();
+    public async Task<UserResponse?> GetUserByIDAsync(Guid userId)
+    {
+        try
+        {
+            var user = await _unitOfWork.UserRepository.GetByIdentifiersAsync(userId);
+            return _mapper.Map<UserResponse>(user);
+        }
+        catch (EntityNotFoundException)
+        {
+            return null;
+        }
+        catch (Exception ex)
+        {
+            throw new ApplicationException("An error occurred while trying to get the user by ID", ex);
+        }
+    }
+
+    public async Task<UserResponse> RegisterUserAsync(UserAddRequest userAddRequest)
+    {
+        try
+        {
+            var newUser = _mapper.Map<User>(userAddRequest);
+            var validationResult = await _validatableUser.ValidateAsync(newUser);
+
+            if (!validationResult.IsValid)
+            {
+                throw new ValidationException(validationResult.Errors);
+            }
+
+            try
+            {
+                var newlyAddedUser = await _unitOfWork.UserRepository.AddAsync(newUser);
+                await _unitOfWork.ExecuteAsync();
+                await _unitOfWork.CommitTransactionAsync();
+                return _mapper.Map<UserResponse>(newlyAddedUser);
+            }
+            catch (DuplicatedEntityException ex)
+            {
+                throw new ApplicationException("The user already exists", ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while trying to register the user", ex);
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new ApplicationException("An error occurred while trying to register the user", ex);
+        }
+    }
 }
