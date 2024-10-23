@@ -1,4 +1,4 @@
-using BudgetBuddy.Domain.Abstractions.Validator;
+﻿using BudgetBuddy.Domain.Abstractions.Validator;
 using BudgetBuddy.Domain.Entities;
 using IUserFluentValidator = FluentValidation.IValidator<BudgetBuddy.Domain.Entities.User>;
 

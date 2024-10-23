@@ -1,4 +1,4 @@
-using BudgetBuddy.Domain.Abstractions.Repository.Specialized;
+﻿using BudgetBuddy.Domain.Abstractions.Repository.Specialized;
 using BudgetBuddy.Domain.Entities;
 using BudgetBuddy.Infrastructure.Data.Contexts;
 using BudgetBuddy.Infrastructure.Repository.Core;

@@ -1,4 +1,4 @@
-using BudgetBuddy.Application.Validators.FluentValidations;
+﻿using BudgetBuddy.Application.Validators.FluentValidations;
 using BudgetBuddy.Application.Validators.Implementations;
 using BudgetBuddy.Domain.Entities;
 using FakeItEasy;

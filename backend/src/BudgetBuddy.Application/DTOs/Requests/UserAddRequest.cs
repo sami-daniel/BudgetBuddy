@@ -1,4 +1,4 @@
-namespace BudgetBuddy.Application.DTOs.Requests;
+﻿namespace BudgetBuddy.Application.DTOs.Requests;
 
 /// <summary>
 /// Represents a request to add a new user to the BudgetBuddy application.

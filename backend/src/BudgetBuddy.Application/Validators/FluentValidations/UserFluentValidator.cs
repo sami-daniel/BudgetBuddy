@@ -1,4 +1,4 @@
-using BudgetBuddy.Domain.Entities;
+﻿using BudgetBuddy.Domain.Entities;
 using FluentValidation;
 
 namespace BudgetBuddy.Application.Validators.FluentValidations;

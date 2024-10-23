@@ -1,4 +1,4 @@
-using BudgetBuddy.IoC;
+﻿using BudgetBuddy.IoC;
 
 namespace BudgetBuddy.WebAPI.Services;
 

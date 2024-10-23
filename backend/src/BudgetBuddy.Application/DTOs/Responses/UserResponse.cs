@@ -1,4 +1,4 @@
-namespace BudgetBuddy.Application.DTOs.Responses;
+﻿namespace BudgetBuddy.Application.DTOs.Responses;
 
 /// <summary>
 /// Represents a response containing information about a user in the BudgetBuddy application.
