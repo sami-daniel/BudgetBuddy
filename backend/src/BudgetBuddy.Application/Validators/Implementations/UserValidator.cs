@@ -19,6 +19,11 @@ public class UserValidator(IUserFluentValidator userFluentValidator) : IValidato
     /// <returns>A <see cref="ValidationState"/> object containing the validation result and any validation errors.</returns>
     public async Task<ValidationState> ValidateAsync(User entity)
     {
+        if (entity == null)
+        {
+            return new ValidationState(false, ["User is required."]);
+        }
+
         var validationResult = await _userFluentValidator.ValidateAsync(entity);
         var validationErrors = validationResult.Errors;
         return new ValidationState(validationResult.IsValid, validationErrors.Select(e => e.ErrorMessage));
