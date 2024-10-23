@@ -28,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BudgetBuddy.Domain\BudgetBuddy.Domain.csproj" />
     <ProjectReference Include="..\BudgetBuddy.Infrastructure\BudgetBuddy.Infrastructure.csproj" />
+    <ProjectReference Include="..\BudgetBuddy.Application\BudgetBuddy.Application.csproj" />
   </ItemGroup>
 
 </Project>
