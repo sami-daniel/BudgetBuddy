@@ -5,7 +5,7 @@ namespace BudgetBuddy.WebAPI.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UserController(IUserService userService) : ControllerBase
+public class UsersController(IUserService userService) : ControllerBase
 {
     private readonly IUserService _userService = userService;
 
